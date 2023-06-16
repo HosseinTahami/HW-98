@@ -1,0 +1,3 @@
+HTTP/3 runs over UDP with QUIC in between
+With TCP that sends packets in strict order, HTTP/2 risks head-of-line (HOL) blocking for the application layer, which means that an entire stream must be reloaded 
+even if a single packet is lost or corrupted.

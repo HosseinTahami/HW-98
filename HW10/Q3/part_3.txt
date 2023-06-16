@@ -1,0 +1,2 @@
+The 3xx class of HTTP Status Codes indicates that further action needs to be taken by the user agent in order to fulfill a request.
+The required action may be carried out by the user agent without interaction with the user, if and only if, the method used in the second request is GET or HEAD.

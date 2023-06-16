@@ -1,0 +1,12 @@
+Function(multi) was called at 2023-05-30 10:56:43.534401 and returend ... !
+Function(multi) was called at 2023-05-30 10:57:16.283464 and returend ... !
+Function(multi) was called at 2023-05-30 10:57:18.390186 and returend ... !
+Function(multi) was called at 2023-05-30 10:57:19.850359 and returend ... !
+Function(multi) was called at 2023-05-30 10:57:20.729785 and returend ... !
+Function(multi) was called at 2023-05-30 10:57:21.928646 and returend ... !
+Function(multi) was called at 2023-05-30 10:57:22.528346 and returend ... !
+Function(multi) was called at 2023-05-30 10:57:23.200857 and returend ... !
+Function(multi) was called at 2023-05-30 10:57:24.078280 and returend ... !
+Function(multi) was called at 2023-06-01 02:12:47.643114 and returend ... !
+Function(multi) was called at 2023-06-01 02:16:20.109788 and returend 45 !
+Function(multi) was called at 2023-06-01 09:10:37.004829 and returend 45 !
