@@ -1,6 +1,5 @@
 import argparse
 
-
 parser = argparse.ArgumentParser(description='Calculate a student\'s average grade')
 parser.add_argument('grades', metavar='G', type=float, nargs='+',
                     help='list of grades')
