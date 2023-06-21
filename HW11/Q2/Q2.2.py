@@ -15,3 +15,4 @@ out = f'Average grade: {avg_grade:.{args.float}f}'
 
 print(out)
 
+# python3 Q2.2.py 20 23.2 98.22 --float 3
