@@ -5,6 +5,8 @@ from datetime import datetime
 
 api_key = "d1b85a0024a2a5a7e6489e6b761b3ef8"
 base_url = "https://api.openweathermap.org/data/2.5/weather"
+HOST = "localhost"
+PORT = 8000
 
 def get_city_weather(city_name: str) -> dict:
     
@@ -28,10 +30,17 @@ def start_server() -> None:
     """
     Start the weather server.
     """
-    pass
+    server_address = (HOST, PORT)
+    
+    class WeatherRequestHandler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            pass
+            
+if __name__ == "__main__" :
+    start_server()
 
-city_name = input("Enter a city name: ")
-get_city_weather(city_name)
+#city_name = input("Enter a city name: ")
+#get_city_weather(city_name)
 
 '''
 -------------------------------   city not found   ----------------------------------
