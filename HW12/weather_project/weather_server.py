@@ -32,7 +32,17 @@ def start_server() -> None:
 
 city_name = input("Enter a city name: ")
 get_city_weather(city_name)
+
 '''
+-------------------------------   city not found   ----------------------------------
+
+{
+    "cod":"404",
+    "message":"city not found"
+}
+
+----------------------------------  200  --------------------------------------------
+
 {
     "coord":{
         "lon":-3.7026,
@@ -69,4 +79,5 @@ get_city_weather(city_name)
         "cod":200
         }
 }
+
 '''
