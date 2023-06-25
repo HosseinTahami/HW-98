@@ -1,11 +1,18 @@
 from typing import List, Tuple
+import psycopg2 as psy
+
 
 class WeatherDatabase:
     def __init__(self):
-        """
-        Initialize a new WeatherDatabase instance.
-        """
-        pass
+
+        self.conn = psy.connect(database = 'weather_db',
+                                user = 'user',
+                                password = 'pass',
+                                host = 'localhost',
+                                port = '5432'
+                                )
+        self.cur = self.conn.cursor()
+
     
     def save_request_data(self, city_name: str, request_time: str) -> None:
         """
