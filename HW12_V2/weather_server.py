@@ -2,15 +2,16 @@ from http.server import BaseHTTPRequestHandler , HTTPServer
 import requests
 import json
 from datetime import datetime
+import urllib
 
 api_key = "d1b85a0024a2a5a7e6489e6b761b3ef8"
 base_url = "https://api.openweathermap.org/data/2.5/weather"
 HOST = "localhost"
 PORT = 9999
 
-def get_city_weather() -> dict:
+def get_city_weather(city_name) -> dict:
     
-    completed_url = base_url + "?q=" + "madrid" + "&appid=" + api_key
+    completed_url = base_url + "?q=" + city_name + "&appid=" + api_key
     response = requests.get(completed_url)
     api = response.json()
     #print(API_response.content)
@@ -29,8 +30,8 @@ def get_city_weather() -> dict:
         return "Something went wrong!"
 class WeatherRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        #city = self.path[1:]
-        weather_dict = get_city_weather()
+        city = urllib.parse.unquote(self.path[1:])
+        weather_dict = get_city_weather(city)
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.end_headers()
