@@ -24,10 +24,9 @@ def get_city_weather(city_name) -> dict:
         }
         return weather_dict
 
-    if response.status_code == 404 :
-        return "city not found"    
-    else :
-        return "Something went wrong!"
+    if 'message' in api:
+        return api
+
 class WeatherRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         city = urllib.parse.unquote(self.path[1:])
