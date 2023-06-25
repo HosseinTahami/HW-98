@@ -1,11 +1,11 @@
-from http.server import BaseHTTPRequestHandler
+from http.server import BaseHTTPRequestHandler , HTTPServer
 import requests
-import json
-import urllib
 from datetime import datetime
 
 api_key = "d1b85a0024a2a5a7e6489e6b761b3ef8"
 base_url = "https://api.openweathermap.org/data/2.5/weather"
+HOST = "localhost"
+PORT = 9999
 
 def get_city_weather(city_name: str) -> dict:
     
@@ -25,10 +25,19 @@ def get_city_weather(city_name: str) -> dict:
     if API_response.status_code == 404 :
         return "city not found"    
 
+class WeatherRequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        weather_dict = get_city_weather(city)
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(weather_dict)
+        
+   
 def start_server() -> None :
     
-    class WeatherRequestHandler(BaseHTTPRequestHandler):
-        
-        def do_GET(self):
-            pass
+    server = HTTPServer((HOST, PORT), WeatherRequestHandler)
+    server.server_forever()
+    server.server_close()
+    
         
