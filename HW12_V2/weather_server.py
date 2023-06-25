@@ -7,7 +7,7 @@ import urllib
 api_key = "d1b85a0024a2a5a7e6489e6b761b3ef8"
 base_url = "https://api.openweathermap.org/data/2.5/weather"
 HOST = "localhost"
-PORT = 9999
+PORT = 9997
 
 def get_city_weather(city_name) -> dict:
     
@@ -43,6 +43,7 @@ def start_server() -> None :
     server = HTTPServer((HOST, PORT), WeatherRequestHandler)
     server.serve_forever()
     print(f"Starting server on {HOST}:{PORT}...")
-    
 
-start_server()
+if __name__ == "__main__":
+    print(f"Starting server on {HOST}:{PORT}...")
+    start_server()
