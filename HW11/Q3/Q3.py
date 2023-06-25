@@ -18,7 +18,7 @@ def leap_years_between_dates(date_str1, date_str2):
 
 def daylight_savings_time(date_str):
     date = datetime.datetime.strptime(date_str, '%Y-%m-%d')
-    _, month, day = map(int, date_str.split('-'))
+    year, month, day = map(int, date_str.split('-'))
     dst_start, dst_end = None, None
     
     if month < 3 or (month == 3 and day < 8):
