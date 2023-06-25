@@ -41,6 +41,7 @@ def start_server() -> None :
     
     server = HTTPServer((HOST, PORT), WeatherRequestHandler)
     server.server_forever()
+    print(f"Starting server on {HOST}:{PORT}...")
     server.server_close()
     
 
