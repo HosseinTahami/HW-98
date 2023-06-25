@@ -9,12 +9,14 @@ def start_client(city):
     response = requests.get("http://"+f"{weather_server.HOST}:{weather_server.PORT}/{city}")
     data = response.json()
     print(data)
-    if data == 'city not found':
-        print('Error: city not found')
+    if 'message' in data:
+        print(f"Error: {data['message']}")
+        print('---------------------------------------------------------------------------------')
     else:
         print(f'Temperature: {data["temperature"]}°C')
         print(f'Feels like: {data["feels_like"]}°C')
         print(f'Last updated: {data["last_updated"]}')
+        print('---------------------------------------------------------------------------------')
             
 
 

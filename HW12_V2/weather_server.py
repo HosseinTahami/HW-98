@@ -38,10 +38,9 @@ class WeatherRequestHandler(BaseHTTPRequestHandler):
         
    
 def start_server() -> None :
-    
     server = HTTPServer((HOST, PORT), WeatherRequestHandler)
-    server.serve_forever()
     print(f"Starting server on {HOST}:{PORT}...")
+    server.serve_forever()
 
 if __name__ == "__main__":
     print(f"Starting server on {HOST}:{PORT}...")
