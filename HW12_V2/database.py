@@ -6,8 +6,8 @@ class WeatherDatabase:
     def __init__(self):
 
         self.conn = psy.connect(database = 'weather_db',
-                                user = 'user',
-                                password = 'pass',
+                                user = 'postgres',
+                                password = 'iran1379',
                                 host = 'localhost',
                                 port = '5432'
                                 )
