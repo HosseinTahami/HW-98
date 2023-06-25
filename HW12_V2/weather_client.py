@@ -20,6 +20,6 @@ def start_client(city):
 
 if __name__ == '__main__' :
     while True:
-        city = input("Enter city name: ")
+        city = input("\nEnter city name: ")
         start_client(city)
     
