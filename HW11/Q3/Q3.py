@@ -1,14 +1,12 @@
 import datetime
 import jdatetime
 
-# function to calculate number of seconds between two dates
 def seconds_between_dates(date_str1, date_str2):
     date1 = datetime.datetime.strptime(date_str1, '%Y-%m-%d')
     date2 = datetime.datetime.strptime(date_str2, '%Y-%m-%d')
     delta = date2 - date1
     return abs(delta.total_seconds())
 
-# function to calculate number of leap years between two dates
 def leap_years_between_dates(date_str1, date_str2):
     year1 = int(date_str1.split('-')[0])
     year2 = int(date_str2.split('-')[0])
@@ -18,13 +16,11 @@ def leap_years_between_dates(date_str1, date_str2):
             count += 1
     return count
 
-# function to calculate daylight savings time for a given date
 def daylight_savings_time(date_str):
     date = datetime.datetime.strptime(date_str, '%Y-%m-%d')
     _, month, day = map(int, date_str.split('-'))
     dst_start, dst_end = None, None
-
-    # determine daylight savings start and end dates
+    
     if month < 3 or (month == 3 and day < 8):
         dst_start = datetime.datetime(date.year, 3, 8)
     else:
@@ -34,7 +30,6 @@ def daylight_savings_time(date_str):
     else:
         dst_end = datetime.datetime(date.year-1, 10, 25)
 
-    # calculate daylight savings time for the given date
     if dst_start <= date < dst_end:
         return "1 hour forward"
     elif dst_end <= date < dst_start+datetime.timedelta(days=7):
@@ -42,17 +37,14 @@ def daylight_savings_time(date_str):
     else:
         return "no daylight savings time"
 
-# function to convert date to jalali date using jdatetime module
 def convert_to_jalali(date_str):
     date = datetime.datetime.strptime(date_str,'%Y-%m-%d')
     jalali_date = jdatetime.datetime.fromgregorian(datetime=date).strftime("%Y-%m-%d")
     return jalali_date
 
-# get user input
 date_str1 = input("Enter first date (YYYY-MM-DD): ")
 date_str2 = input("Enter second date (YYYY-MM-DD): ")
 
-# calculate and print results
 seconds = seconds_between_dates(date_str1, date_str2)
 leap_years = leap_years_between_dates(date_str1, date_str2)
 
