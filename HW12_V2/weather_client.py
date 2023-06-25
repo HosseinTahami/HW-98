@@ -2,6 +2,8 @@ import requests
 import json
 import weather_server
 
+city = input("Enter city name: ")
+
 def start_client():
     while True:
         response = requests.get(f"http://{weather_server.HOST}:{weather_server.PORT}/{city}")
@@ -15,6 +17,6 @@ def start_client():
             
 
 
-city = input("Enter city name: ")
+
 start_client(city)
     
