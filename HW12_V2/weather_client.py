@@ -22,32 +22,35 @@ def start_client(city):
 
 if __name__ == '__main__' :
     while True:
-        print("""
-              Main Menu:
+        
+        main_menu = """
+Main Menu:
               
-              1- Enter city name
-              2- Work With database
+    1- Enter city name
+    2- Work With database
               
-              """)
-        option = int(input("Option: "))
+"""
+        database_menu = """
+                    
+Database Menu:
+                    
+    1- Total Number of Requests
+    2- Number of successful requests
+    3- Last hour requests
+    4- Number of Specific City Requests
+    5 - Back to Main Menu
+                    
+                    """
+        print(main_menu)
+        option = int(input("    Option: "))
         if option == 1:
-            city = input("\nEnter city name: ")
+            city = input("  \nEnter city name: ")
             start_client(city)
             db.WeatherDatabase.save_request_data(city,datetime.datetime.now())
         elif option == 2 :
             while True:
-                print("""
-                    
-                    Database Menu:
-                    
-                    1- Total Number of Requests
-                    2- Number of successful requests
-                    3- Last hour requests
-                    4- Number of Specific City Requests
-                    5 - Back to Main Menu
-                    
-                    """)
-                option = int(input("Option: "))
+                print()
+                option = int(input("    Option: "))
                 if option == 1 :
                     pass
                 elif option ==  2 :
@@ -59,8 +62,8 @@ if __name__ == '__main__' :
                 elif option == 5 :
                     break;
                 else :
-                    print("Wrong Option Choose Again !")
+                    print(" Wrong Option Choose Again !")
                 
         else :
-            print("Wrong option Choose Again !")
+            print(" Wrong option Choose Again !")
     
