@@ -21,6 +21,8 @@ def start_client(city):
 
 
 if __name__ == '__main__' :
+    
+    wdb = db.WeatherDatabase()
     while True:
         
         main_menu = """
@@ -46,7 +48,7 @@ Database Menu:
         if option == 1:
             city = input("  \nEnter city name: ")
             start_client(city)
-            db.WeatherDatabase.save_request_data(city,datetime.datetime.now())
+            wdb.save_request_data(city,datetime.datetime.now())
         elif option == 2 :
             while True:
                 print()
