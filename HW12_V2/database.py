@@ -51,7 +51,7 @@ class WeatherDatabase:
         Returns:
         - int: The total number of successful requests made to the server.
         """
-        self.cur.execute("SELECT COUNT(*) AS row_count FROM responses WHERE success_code = 1")
+        self.cur.execute("SELECT COUNT(*) AS row_count FROM responses WHERE success_code = '1'")
         return self.cur.fetchone()[0]
     
     
