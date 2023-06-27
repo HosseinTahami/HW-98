@@ -60,12 +60,10 @@ if __name__ == '__main__' :
                 print(database_menu)
                 option = int(input("    Option: "))
                 if option == 1 :
-                    print("\n")
-                    print(" Number of total requests: ", wdb.get_request_count())
+                    print("    Number of total requests: ", wdb.get_request_count())
                     print('---------------------------------------------------------------------------------')
                 elif option ==  2 :
-                    print("\n")
-                    print("Number of successful requests: ", wdb.get_successful_request_count())
+                    print("    Number of successful requests: ", wdb.get_successful_request_count())
                     print('---------------------------------------------------------------------------------')
                 elif option == 3 :
                     pass
