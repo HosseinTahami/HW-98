@@ -37,7 +37,7 @@ class WeatherDatabase:
         self.cur.execute("INSERT INTO responses (city_name, success_code, temperature, feels_like, last_updated) VALUES ( %s, %s, %s, %s, %s)",
                         (city_name, success_code, temperature, feels_like, last_updated)
                         )
-        self.cur.commit()
+        self.conn.commit()
         
     def get_request_count(self) -> int:
         """
