@@ -3,6 +3,26 @@ import weather_server
 import database as db
 import datetime
 
+        
+main_menu = """
+Main Menu:
+              
+    1- Enter city name
+    2- Work With database
+              
+"""
+
+database_menu = """
+                    
+Database Menu:
+                    
+    1- Total Number of Requests
+    2- Number of successful requests
+    3- Last hour requests
+    4- Number of Specific City Requests
+    5 - Back to Main Menu
+                    
+                    """
 
 def start_client(city):
 
@@ -18,25 +38,6 @@ if __name__ == '__main__' :
     
     wdb = db.WeatherDatabase()
     while True:
-        
-        main_menu = """
-Main Menu:
-              
-    1- Enter city name
-    2- Work With database
-              
-"""
-        database_menu = """
-                    
-Database Menu:
-                    
-    1- Total Number of Requests
-    2- Number of successful requests
-    3- Last hour requests
-    4- Number of Specific City Requests
-    5 - Back to Main Menu
-                    
-                    """
         print(main_menu)
         option = int(input("    Option: "))
         if option == 1:
@@ -59,9 +60,11 @@ Database Menu:
                 print(database_menu)
                 option = int(input("    Option: "))
                 if option == 1 :
-                    print("Number of total requests: ", wdb.get_request_count())
+                    print("\n")
+                    print(" Number of total requests: ", wdb.get_request_count())
                 elif option ==  2 :
-                    pass
+                    print("\n")
+                    print("Number of successful requests: ", wdb.get_successful_request_count())
                 elif option == 3 :
                     pass
                 elif option == 4 :

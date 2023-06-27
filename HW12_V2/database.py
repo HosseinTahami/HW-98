@@ -40,12 +40,7 @@ class WeatherDatabase:
         self.conn.commit()
         
     def get_request_count(self) -> int:
-        """
-        Get the total number of requests made to the server.
 
-        Returns:
-        - int: The total number of requests made to the server.
-        """
         self.cur.execute("SELECT COUNT(*) AS row_count FROM responses")
         return self.cur.fetchone()[0]
         
@@ -56,7 +51,8 @@ class WeatherDatabase:
         Returns:
         - int: The total number of successful requests made to the server.
         """
-        pass
+        self.cur.execute("SELECT COUNT(*) AS row_count FROM responses WHERE success_code = 1")
+        return self.cur.fetchone()[0]
     
     
     def get_city_request_count(self) -> List[Tuple[str, int]]:
