@@ -44,6 +44,7 @@ if __name__ == '__main__' :
                     2- Number of successful requests
                     3- Last hour requests
                     4- Number of Specific City Requests
+                    5 - Back to Main Menu
                     
                     """)
                 option = int(input("Option: "))
@@ -51,6 +52,15 @@ if __name__ == '__main__' :
                     pass
                 elif option ==  2 :
                     pass
+                elif option == 3 :
+                    pass
+                elif option == 4 :
+                    pass
+                elif option == 5 :
+                    break;
+                else :
+                    print("Wrong Option Choose Again !")
+                
         else :
             print("Wrong option Choose Again !")
     
