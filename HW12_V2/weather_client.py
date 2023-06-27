@@ -23,7 +23,7 @@ def start_client(city):
 if __name__ == '__main__' :
     while True:
         print("""
-              Menu:
+              Main Menu:
               
               1- Enter city name
               2- Work With database
@@ -35,7 +35,22 @@ if __name__ == '__main__' :
             start_client(city)
             db.WeatherDatabase.save_request_data(city,datetime.datetime.now())
         elif option == 2 :
-            pass
+            while True:
+                print("""
+                    
+                    Database Menu:
+                    
+                    1- Total Number of Requests
+                    2- Number of successful requests
+                    3- Last hour requests
+                    4- Number of Specific City Requests
+                    
+                    """)
+                option = int(input("Option: "))
+                if option == 1 :
+                    pass
+                elif option ==  2 :
+                    pass
         else :
             print("Wrong option Choose Again !")
     
