@@ -1,7 +1,7 @@
 import requests
 import weather_server
 import database as db
-
+import datetime
 
 
 def start_client(city):
@@ -33,7 +33,7 @@ if __name__ == '__main__' :
         if option == 1:
             city = input("\nEnter city name: ")
             start_client(city)
-            db.WeatherDatabase.save_request_data()
+            db.WeatherDatabase.save_request_data(city,datetime.datetime.now())
         elif option == 2 :
             pass
         else :
