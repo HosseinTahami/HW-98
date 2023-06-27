@@ -18,7 +18,7 @@ class WeatherDatabase:
         self.cur.execute("INSERT INTO requests (city_name, request_time) VALUES (%s, %s)",
                         (city_name, request_time)
                         )
-        self.cur.commit()
+        self.conn.commit()
     
     def save_response_data(self, city_name: str, response_data: dict) -> None:
 
