@@ -21,13 +21,21 @@ class WeatherDatabase:
         self.conn.commit()
     
     def save_response_data(self, city_name: str, response_data: dict) -> None:
-
-        temperature = response_data['temperature']
-        feels_like = response_data['feels_like']
-        last_updated = response_data['last_updated']
         
-        self.cur.execute("INSERT INTO responses (city_name, temperature, feels_like, last_updated, response_time ) VALUES (%s, %i, %i, %s)",
-                        (city_name, temperature, feels_like, last_updated)
+        
+        if 'message' in response_data:
+            temperature = None
+            feels_like = None
+            last_updated = None
+            success_code = 0
+        else:
+            temperature = response_data['temperature']
+            feels_like = response_data['feels_like']
+            last_updated = response_data['last_updated']
+            success_code = 1
+        
+        self.cur.execute("INSERT INTO responses (city_name, success_code, temperature, feels_like, last_updated) VALUES ( %s, %s, %s, %s, %s)",
+                        (city_name, success_code, temperature, feels_like, last_updated)
                         )
         self.cur.commit()
         
