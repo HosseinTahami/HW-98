@@ -62,4 +62,16 @@ class WeatherDatabase:
         Returns:
         - List[Tuple[str, int]]: A list of tuples containing the name of the city and the number of requests made for that city.
         """
+        self.cur.execute("SELECT city_name, COUNT(*), as request_count FROM requests GROUP BY city_name")
+        #city_list = 
+        #https://stackoverflow.com/questions/8142364/how-to-compare-two-dates
+    
+    def get_last_hour_requests(self) -> List[Tuple[str, str]]:
+        """
+        Get a list of requests made in the last hour.
+
+        Returns:
+        - List[Tuple[str, str]]: A list of tuples containing the name of the city and the time the request was made, in ISO format.
+        """
         pass
+        
