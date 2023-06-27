@@ -1,6 +1,6 @@
 import requests
-import json
 import weather_server
+import database as db
 
 
 
@@ -22,6 +22,20 @@ def start_client(city):
 
 if __name__ == '__main__' :
     while True:
-        city = input("\nEnter city name: ")
-        start_client(city)
+        print("""
+              Menu:
+              
+              1- Enter city name
+              2- Work With database
+              
+              """)
+        option = int(input("Option: "))
+        if option == 1:
+            city = input("\nEnter city name: ")
+            start_client(city)
+            db.WeatherDatabase.save_request_data()
+        elif option == 2 :
+            pass
+        else :
+            print("Wrong option Choose Again !")
     
