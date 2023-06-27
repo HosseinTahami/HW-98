@@ -56,7 +56,7 @@ Database Menu:
             
         elif option == 2 :
             while True:
-                print()
+                print(database_menu)
                 option = int(input("    Option: "))
                 if option == 1 :
                     print("Number of total requests: ", wdb.get_request_count())
