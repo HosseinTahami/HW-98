@@ -12,35 +12,27 @@ class WeatherDatabase:
                                 port = '5432'
                                 )
         self.cur = self.conn.cursor()
+        
 
     
     def save_request_data(self, city_name: str, request_time: str) -> None:
-        """
-        Save request data for a city to the database.
 
-        Args:
-        - city_name (str): The name of the city to save request data for.
-        - request_time (str): The time the request was made, in ISO format.
-
-        Returns:
-        - None
-        """
-        self.cur.execute("INSERT INTO requests (city_name, request_time) VALUES (%s, %s)", (city_name, request_time))
+        self.cur.execute("INSERT INTO requests (city_name, request_time) VALUES (%s, %s)",
+                        (city_name, request_time)
+                        )
         self.cur.commit()
     
     def save_response_data(self, city_name: str, response_data: dict) -> None:
-        """
-        Save response data for a city to the database.
 
-        Args:
-        - city_name (str): The name of the city to save response data for.
-        - response_data (dict): A dictionary containing weather information for the city, including temperature, feels like temperature, and last updated time.
-
-        Returns:
-        - None
-        """
-        pass
-    
+        temperature = response_data['temperature']
+        feels_like = response_data['feels_like']
+        last_updated = response_data['last_updated']
+        
+        self.cur.execute("INSERT INTO responses (city_name, temperature, feels_like, last_updated, response_time ) VALUES (%s, %i, %i, %s)",
+                        (city_name, temperature, feels_like, last_updated)
+                        )
+        self.cur.commit()
+        
     def get_request_count(self) -> int:
         """
         Get the total number of requests made to the server.
