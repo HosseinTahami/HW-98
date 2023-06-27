@@ -8,7 +8,7 @@ def start_client(city):
 
     response = requests.get("http://"+f"{weather_server.HOST}:{weather_server.PORT}/{city}")
     data = response.json()
-    print(data)
+    #print(data)
     return data
 
             
