@@ -12,8 +12,6 @@ class WeatherDatabase:
                                 port = '5432'
                                 )
         self.cur = self.conn.cursor()
-        
-
     
     def save_request_data(self, city_name: str, request_time: str) -> None:
 
