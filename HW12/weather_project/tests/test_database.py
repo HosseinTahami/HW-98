@@ -1,5 +1,6 @@
 from database import WeatherDatabase
 import pytest
+from datetime import datetime, timedelta
 
 
 
@@ -42,3 +43,16 @@ def test_get_request_count(test):
 
 def test_get_successful_request_count(test):
     assert test.get_successful_request_count() == 1
+
+def test_get_city_request_count(test):
+    valid_result = [("Madrid", 1), ("Invalid City", 1)]
+    assert test.get_city_request_count() == valid_result
+    
+def test_get_last_hour_requests(test):
+
+    now = datetime.now()
+    last_hour = now - timedelta( hours = 1 )
+    test.save_request_data("New York", last_hour)
+    test.save_request_data("Paris", last_hour)
+    valid_result = [("New York", last_hour),("Paris", now)]
+    assert test.get_last_hour_requests() == valid_result
