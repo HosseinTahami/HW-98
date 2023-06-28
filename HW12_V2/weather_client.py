@@ -19,11 +19,11 @@ Database Menu:
                     
     1- Total Number of Requests
     2- Number of successful requests
-    3- Last hour requests
-    4- Number of Specific City Requests
-    5 - Back to Main Menu
+    3- Number of Specific City Requests
+    4- Last hour requests
+    5- Back to Main Menu
                     
-                    """
+"""
 
 def start_client(city):
 
@@ -67,7 +67,10 @@ if __name__ == '__main__' :
                     print("    Number of successful requests: ", wdb.get_successful_request_count())
                     print('---------------------------------------------------------------------------------')
                 elif option == '3' :
-                    print("    Number of requests by city: ", wdb.get_city_request_count())
+                    print("    Number of requests by city: \n")
+                    requests_list = wdb.get_city_request_count()
+                    for city in requests_list :
+                        print("    ", city)
                     print('---------------------------------------------------------------------------------')
                 elif option == '4' :
                     pass
