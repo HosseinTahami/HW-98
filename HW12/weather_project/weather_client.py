@@ -42,7 +42,7 @@ if __name__ == '__main__' :
         option = input("    Option: ")
         if option == '1':
             while True:
-                city = input("  \nEnter city name: ")
+                city = input("  \nEnter city name: ").lower()
                 data = start_client(city)
                 wdb.save_request_data(city,datetime.datetime.now())
                 wdb.save_response_data(city, data)
