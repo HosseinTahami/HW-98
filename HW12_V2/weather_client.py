@@ -69,14 +69,14 @@ if __name__ == '__main__' :
                 elif option == '3' :
                     print("    Number of requests by city: \n")
                     requests_list = wdb.get_city_request_count()
-                    for city in requests_list :
-                        print("    ", city)
+                    for i, city in enumerate(requests_list) :
+                        print("    ", i, "-", city[0], ": ", city[1])
                     print('---------------------------------------------------------------------------------')
                 elif option == '4' :
                     request_list = wdb.get_last_hour_requests()
-                    for city in request_list :
-                        print("    ", city)
-                        print('---------------------------------------------------------------------------------')           
+                    for i, city in enumerate(request_list) :
+                        print("    ", i, "-", city[0], ": ", city[1])
+                    print('---------------------------------------------------------------------------------')           
                 elif option == '5' :
                     break;
                 else :
