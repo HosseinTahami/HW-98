@@ -73,7 +73,9 @@ if __name__ == '__main__' :
                         print("    ", city)
                     print('---------------------------------------------------------------------------------')
                 elif option == '4' :
-                    print(wdb.get_last_hour_requests())             
+                    request_list = wdb.get_last_hour_requests()
+                    for city in request_list :
+                        print(city)             
                 elif option == '5' :
                     break;
                 else :
