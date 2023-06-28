@@ -16,8 +16,9 @@ class WeatherDatabase:
     
     def save_request_data(self, city_name: str, request_time: str) -> None:
 
-        self.cur.execute("INSERT INTO requests (city_name, request_time) VALUES (%s, %s)",
-                        (city_name, request_time)
+        self.cur.execute("""INSERT INTO requests 
+                            (city_name, request_time) VALUES (%s, %s)""",
+                            (city_name, request_time)
                         )
         self.conn.commit()
     
@@ -35,12 +36,15 @@ class WeatherDatabase:
             last_updated = response_data['last_updated']
             success_code = 1
         
-        self.cur.execute("""INSERT INTO responses (city_name, success_code, temperature, feels_like, last_updated) 
-                            VALUES ( %s, %s, %s, %s, %s)""", (city_name, success_code, temperature, feels_like, last_updated))
+        self.cur.execute("""INSERT INTO responses 
+                            (city_name, success_code, temperature, feels_like, last_updated) 
+                            VALUES ( %s, %s, %s, %s, %s)""", 
+                            (city_name, success_code, temperature, feels_like, last_updated))
         self.conn.commit()
         
     def get_request_count(self) -> int:
-        self.cur.execute("""SELECT COUNT(*) AS row_count FROM responses""")
+        self.cur.execute("""SELECT COUNT(*) AS row_count 
+                            FROM responses""")
         return self.cur.fetchone()[0]
         
     def get_successful_request_count(self) -> int:
@@ -52,7 +56,8 @@ class WeatherDatabase:
     
     def get_city_request_count(self) -> List[Tuple[str, int]]:
 
-        self.cur.execute("SELECT city_name, COUNT(*) AS request_count FROM requests GROUP BY city_name")
+        self.cur.execute("""SELECT city_name, COUNT(*) AS request_count
+                            FROM requests GROUP BY city_name""")
         request_list = []
         for city in self.cur.fetchall():
             request_list.append(city)
