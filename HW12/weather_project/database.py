@@ -39,7 +39,7 @@ class WeatherDatabase:
             success_code = True
         
         self.cur.execute(""" SELECT COUNT(request_id)
-                             FROM requests""")
+                             FROM responses""")
         
         id_number = self.cur.fetchone()[0] + 1
         
