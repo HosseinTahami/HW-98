@@ -44,33 +44,38 @@ class WeatherDatabase:
         
     def get_request_count(self) -> int:
         self.cur.execute("""SELECT COUNT(*) AS row_count 
-                            FROM responses""")
+                            FROM responses
+                        """)
         return self.cur.fetchone()[0]
         
     def get_successful_request_count(self) -> int:
         self.cur.execute("""SELECT COUNT(*) AS row_count
                             FROM responses 
-                            WHERE success_code = '1'""")
+                            WHERE success_code = '1'
+                        """)
         return self.cur.fetchone()[0]
     
     
     def get_city_request_count(self) -> List[Tuple[str, int]]:
         self.cur.execute("""SELECT city_name, COUNT(*) AS request_count
-                            FROM requests GROUP BY city_name""")
+                            FROM requests GROUP BY city_name
+                        """)
         request_list = []
         for city in self.cur.fetchall():
             request_list.append(city)
         return request_list
     
     def get_last_hour_requests(self) -> List[Tuple[str, str]]:
-        """
-        Get a list of requests made in the last hour.
-
-        Returns:
-        - List[Tuple[str, str]]: A list of tuples containing the name of the city and the time the request was made, in ISO format.
-        """
         last_hour_date_time = datetime.now() - timedelta(hours = 1)
-        print(last_hour_date_time)
-        #https://stackoverflow.com/questions/8142364/how-to-compare-two-dates
-        pass
+        now_date_time = datetime.now()
+        self.cur.execute(f"""SELECT * 
+                            FROM requests 
+                            WHERE request_time BETWEEN '{last_hour_date_time}' AND '{now_date_time}' """
+                            )
+
+        request_list = []
+        for city in self.cur.fetchall():
+            request_list.append(city)
+        return request_list
+
         
