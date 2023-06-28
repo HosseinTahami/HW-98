@@ -25,10 +25,12 @@ def test_save_response_data(test):
     }
     
     test.save_response_data("Madrid", testing_data_valid)
+    test.cur.execute("select count(*) from requests")
     assert test.cur.fetchone()[0] == 1
     
     testing_data_invalid = {'message' : 'City not found'}
-    test_db.save_response_data('Invalid City', testing_data_invalid)
+    test.save_response_data('Invalid City', testing_data_invalid)
+    test.cur.execute("select count(*) from requests")
     assert test.cur.fetchone()[0] == 2
     
 
@@ -36,6 +38,7 @@ def test_get_request_count(test):
     assert test.get_request_count() == 1
 
 def test_get_successful_request_count(test):
+    test.cur.execute("select count(*) from requests")
     assert test.get_successful_request_count() == 1
 
 def test_get_city_request_count(test):
