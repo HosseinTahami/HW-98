@@ -6,7 +6,7 @@ import pytest
 
 @pytest.fixture
 def test_db():
-    db = WeatherDatabase(database = 'test',
+    db = WeatherDatabase(database = 'weather_test_db',
                          user = 'postgres',
                          password = 'iran1379',
                          host = 'localhost',
@@ -22,15 +22,23 @@ def test_save_request_data(test):
     assert test.cur.fetchone()[0] == 1
     
 def test_save_response_data(test):
-    testing_data = {
+    testing_data_valid = {
         
         'temperature': 23.56,
         'feels_like' : 78.99,
         'last_updated' : '2023-01-01 00:00:00'
     }
     
-    test.save_response_data("Madrid", testing_data)
+    test.save_response_data("Madrid", testing_data_valid)
+    assert test.cur.fetchone()[0] == 1
     
+    testing_data_invalid = {'message' : 'City not found'}
+    test_db.save_response_data('Invalid City', testing_data_invalid)
+    assert test.cur.fetchone()[0] == 2
     
-    
-    test.save_request_data()
+
+def test_get_request_count(test):
+    assert test.get_request_count() == 1
+
+def test_get_successful_request_count(test):
+    assert test.get_successful_request_count() == 1
