@@ -47,7 +47,6 @@ def test_get_city_request_count(test):
     assert test.get_city_request_count() == valid_result
     
 def test_get_last_hour_requests(test):
-
     now = datetime.now()
     last_hour = now - timedelta( hours = 1 )
     test.save_request_data("New York", last_hour)
