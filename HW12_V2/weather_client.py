@@ -29,7 +29,6 @@ def start_client(city):
 
     response = requests.get("http://"+f"{weather_server.HOST}:{weather_server.PORT}/{city}")
     data = response.json()
-    #print(data)
     return data
 
             
@@ -42,18 +41,21 @@ if __name__ == '__main__' :
         print(main_menu)
         option = input("    Option: ")
         if option == '1':
-            city = input("  \nEnter city name: ")
-            data = start_client(city)
-            wdb.save_request_data(city,datetime.datetime.now())
-            wdb.save_response_data(city, data)
-            if 'message' in data:
-                print(f"Error: {data['message']}")
-                print('---------------------------------------------------------------------------------')
-            else:
-                print(f'Temperature: {data["temperature"]}°C')
-                print(f'Feels like: {data["feels_like"]}°C')
-                print(f'Last updated: {data["last_updated"]}')
-                print('---------------------------------------------------------------------------------')
+            while True:
+                city = input("  \nEnter city name: ")
+                data = start_client(city)
+                wdb.save_request_data(city,datetime.datetime.now())
+                wdb.save_response_data(city, data)
+                if 'message' in data:
+                    print(f"Error: {data['message']}")
+                    print('---------------------------------------------------------------------------------')
+                    
+                else:
+                    print(f'Temperature: {data["temperature"]}°C')
+                    print(f'Feels like: {data["feels_like"]}°C')
+                    print(f'Last updated: {data["last_updated"]}')
+                    print('---------------------------------------------------------------------------------')
+                    break
         
             
         elif option == '2' :
