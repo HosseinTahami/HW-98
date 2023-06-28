@@ -70,12 +70,12 @@ if __name__ == '__main__' :
                     print("    Number of requests by city: \n")
                     requests_list = wdb.get_city_request_count()
                     for i, city in enumerate(requests_list) :
-                        print("    ", i, "-", city[0], ": ", city[1])
+                        print("    ", str(i+1)+"-", city[0]+":", city[1])
                     print('---------------------------------------------------------------------------------')
                 elif option == '4' :
                     request_list = wdb.get_last_hour_requests()
                     for i, city in enumerate(request_list) :
-                        print("    ", i, "-", city[0], ": ", city[1])
+                        print("    ", str(i+1)+"-", city[0]+":", city[1])
                     print('---------------------------------------------------------------------------------')           
                 elif option == '5' :
                     break;
