@@ -77,7 +77,7 @@ if __name__ == '__main__' :
                 elif option == '4' :
                     request_list = wdb.get_last_hour_requests()
                     for i, city in enumerate(request_list) :
-                        print("    ", str(i+1)+"-", city[0]+":", city[1])
+                        print("    ", str(i+1)+"-", city[0]+":", city[2])
                     print('---------------------------------------------------------------------------------')           
                 elif option == '5' :
                     break;
