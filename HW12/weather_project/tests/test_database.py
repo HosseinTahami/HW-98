@@ -56,3 +56,4 @@ def test_get_last_hour_requests(test):
     test.save_request_data("Paris", last_hour)
     valid_result = [("New York", last_hour),("Paris", now)]
     assert test.get_last_hour_requests() == valid_result
+        
