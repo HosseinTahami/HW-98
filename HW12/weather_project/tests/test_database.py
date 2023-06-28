@@ -4,12 +4,8 @@ from datetime import datetime, timedelta
 
 
 @pytest.fixture
-def test_db():
-    db = WeatherDatabase(database = 'weather_test_db',
-                         user = 'postgres',
-                         password = 'iran1379',
-                         host = 'localhost',
-                         port = '5432')
+def test():
+    db = WeatherDatabase('weather_test_db')
     db.cur.execute("delete from requests")
     db.cur.execute("delete from responses")
     db.conn.commit()

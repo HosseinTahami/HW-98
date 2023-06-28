@@ -36,7 +36,7 @@ def start_client(city):
 
 if __name__ == '__main__' :
     
-    wdb = db.WeatherDatabase()
+    wdb = db.WeatherDatabase('weather_db')
     while True:
         print(main_menu)
         option = input("    Option: ")

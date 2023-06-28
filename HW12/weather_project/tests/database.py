@@ -4,9 +4,9 @@ from datetime import datetime, timedelta
 
 
 class WeatherDatabase:
-    def __init__(self):
+    def __init__(self,db_name):
 
-        self.conn = psy.connect(database = 'weather_db',
+        self.conn = psy.connect(database = db_name,
                                 user = 'postgres',
                                 password = 'iran1379',
                                 host = 'localhost',
