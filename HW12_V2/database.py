@@ -55,15 +55,12 @@ class WeatherDatabase:
     
     
     def get_city_request_count(self) -> List[Tuple[str, int]]:
-
         self.cur.execute("""SELECT city_name, COUNT(*) AS request_count
                             FROM requests GROUP BY city_name""")
         request_list = []
         for city in self.cur.fetchall():
             request_list.append(city)
         return request_list
-        #city_list = 
-        #https://stackoverflow.com/questions/8142364/how-to-compare-two-dates
     
     def get_last_hour_requests(self) -> List[Tuple[str, str]]:
         """
@@ -72,5 +69,8 @@ class WeatherDatabase:
         Returns:
         - List[Tuple[str, str]]: A list of tuples containing the name of the city and the time the request was made, in ISO format.
         """
+        last_hour_date_time = datetime.now() - timedelta(hours = 1)
+        print(last_hour_date_time)
+        #https://stackoverflow.com/questions/8142364/how-to-compare-two-dates
         pass
         
