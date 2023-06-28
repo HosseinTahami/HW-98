@@ -67,7 +67,8 @@ if __name__ == '__main__' :
                     print("    Number of successful requests: ", wdb.get_successful_request_count())
                     print('---------------------------------------------------------------------------------')
                 elif option == '3' :
-                    pass
+                    print("    Number of requests by city: ", wdb.get_city_request_count())
+                    print('---------------------------------------------------------------------------------')
                 elif option == '4' :
                     pass
                 elif option == '5' :

@@ -1,5 +1,6 @@
 from typing import List, Tuple
 import psycopg2 as psy
+from datetime import datetime, timedelta
 
 
 class WeatherDatabase:
@@ -62,7 +63,11 @@ class WeatherDatabase:
         Returns:
         - List[Tuple[str, int]]: A list of tuples containing the name of the city and the number of requests made for that city.
         """
-        self.cur.execute("SELECT city_name, COUNT(*), as request_count FROM requests GROUP BY city_name")
+        self.cur.execute("SELECT city_name, COUNT(*) AS request_count FROM requests GROUP BY city_name")
+        request_list = []
+        for city in self.cur.fetchall():
+            request_list.append(city)
+        return request_list
         #city_list = 
         #https://stackoverflow.com/questions/8142364/how-to-compare-two-dates
     
