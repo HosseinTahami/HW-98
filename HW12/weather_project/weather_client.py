@@ -44,7 +44,7 @@ if __name__ == '__main__' :
             while True:
                 city = input("  \nEnter city name: ").lower()
                 data = start_client(city)
-                wdb.save_request_data(city,datetime.datetime.now())
+                wdb.save_request_data(city,str(datetime.datetime.now()))
                 wdb.save_response_data(city, data)
                 if 'message' in data:
                     print(f"Error: {data['message']}")

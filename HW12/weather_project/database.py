@@ -16,9 +16,10 @@ class WeatherDatabase:
     
     def save_request_data(self, city_name: str, request_time: str) -> None:
         
-        id_number = self.cur.execute(""" SELECT COUNT(request_id)
-                                         FROM requests""") + 1
+        self.cur.execute(""" SELECT COUNT(request_id)
+                             FROM requests""")
         
+        id_number = self.cur.fetchone()[0] + 1
         self.cur.execute(f"""INSERT INTO requests (city_name, request_id, request_time) 
                             VALUES {city_name, id_number, request_time} """)
         
@@ -30,19 +31,21 @@ class WeatherDatabase:
             temperature = None
             feels_like = None
             last_updated = None
-            success_code = 0
+            success_code = False
         else:
             temperature = response_data['temperature']
             feels_like = response_data['feels_like']
             last_updated = response_data['last_updated']
-            success_code = 1
+            success_code = True
         
-        id_number = self.cur.execute(""" SELECT COUNT(request_id)
-                                         FROM requests""") + 1
+        self.cur.execute(""" SELECT COUNT(request_id)
+                             FROM requests""")
+        
+        id_number = self.cur.fetchone()[0] + 1
         
         self.cur.execute(f"""INSERT INTO responses 
-                            (request_id, city_name, success_code, temperature, feels_like, last_updated) 
-                            VALUES {id_number, city_name, success_code, temperature, feels_like, last_updated}""" )
+                            (request_id, city_name, temperature, feels_like, success_code, last_updated) 
+                            VALUES {id_number, city_name, temperature, feels_like, success_code, last_updated}""" )
         self.conn.commit()
         
     def get_request_count(self) -> int:
