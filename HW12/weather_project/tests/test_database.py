@@ -3,8 +3,6 @@ import pytest
 from datetime import datetime, timedelta
 
 
-
-
 @pytest.fixture
 def test_db():
     db = WeatherDatabase(database = 'weather_test_db',
