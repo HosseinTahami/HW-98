@@ -61,7 +61,7 @@ class WeatherDatabase:
     def get_successful_request_count(self) -> int:
         self.cur.execute("""SELECT COUNT(*) AS row_count
                             FROM responses 
-                            WHERE success_code = 1
+                            WHERE success_code = True
                         """)
         return self.cur.fetchone()[0]
     
