@@ -15,15 +15,16 @@ class WeatherDatabase:
         self.cur = self.conn.cursor()
     
     def save_request_data(self, city_name: str, request_time: str) -> None:
-
-        self.cur.execute("""INSERT INTO requests 
-                            (city_name, request_time) VALUES (%s, %s)""",
-                            (city_name, request_time)
-                        )
+        
+        id_number = self.cur.execute(""" SELECT COUNT(request_id)
+                                         FROM requests""") + 1
+        
+        self.cur.execute(f"""INSERT INTO requests (city_name, request_id, request_time) 
+                            VALUES {city_name, id_number, request_time} """)
+        
         self.conn.commit()
     
     def save_response_data(self, city_name: str, response_data: dict) -> None:
-        
         
         if 'message' in response_data:
             temperature = None
@@ -36,10 +37,12 @@ class WeatherDatabase:
             last_updated = response_data['last_updated']
             success_code = 1
         
-        self.cur.execute("""INSERT INTO responses 
-                            (city_name, success_code, temperature, feels_like, last_updated) 
-                            VALUES ( %s, %s, %s, %s, %s)""", 
-                            (city_name, success_code, temperature, feels_like, last_updated))
+        id_number = self.cur.execute(""" SELECT COUNT(request_id)
+                                         FROM requests""") + 1
+        
+        self.cur.execute(f"""INSERT INTO responses 
+                            (request_id, city_name, success_code, temperature, feels_like, last_updated) 
+                            VALUES {id_number, city_name, success_code, temperature, feels_like, last_updated}""" )
         self.conn.commit()
         
     def get_request_count(self) -> int:
@@ -51,7 +54,7 @@ class WeatherDatabase:
     def get_successful_request_count(self) -> int:
         self.cur.execute("""SELECT COUNT(*) AS row_count
                             FROM responses 
-                            WHERE success_code = '1'
+                            WHERE success_code = 1
                         """)
         return self.cur.fetchone()[0]
     
@@ -59,7 +62,6 @@ class WeatherDatabase:
     def get_city_request_count(self) -> List[Tuple[str, int]]:
         self.cur.execute("""SELECT city_name, COUNT(*) AS request_count
                             FROM responses
-                            WHERE success_code = '1'
                             GROUP BY city_name
                         """)
         request_list = []
