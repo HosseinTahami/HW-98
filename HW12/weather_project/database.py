@@ -27,25 +27,29 @@ class WeatherDatabase:
     
     def save_response_data(self, city_name: str, response_data: dict) -> None:
         
+        self.cur.execute(""" SELECT COUNT(request_id)
+                             FROM responses""")
+        id_number = self.cur.fetchone()[0] + 1
+        
         if 'message' in response_data:
-            temperature = None
+            temperature_deg = None
             feels_like = None
             last_updated = None
             success_code = False
+            self.cur.execute(f"""INSERT INTO responses 
+                                (request_id, city_name, temperature, feels_like, success_code, last_updated) 
+                                VALUES (%s, %s, %s, %s, %s, %s)""",
+                                (id_number, city_name, temperature_deg, feels_like, success_code, last_updated))
         else:
             temperature = response_data['temperature']
             feels_like = response_data['feels_like']
             last_updated = response_data['last_updated']
             success_code = True
+            self.cur.execute(f"""INSERT INTO responses 
+                                (request_id, city_name, temperature, feels_like, success_code, last_updated) 
+                                VALUES {id_number, city_name, temperature, feels_like, success_code, last_updated}""" )
         
-        self.cur.execute(""" SELECT COUNT(request_id)
-                             FROM responses""")
-        
-        id_number = self.cur.fetchone()[0] + 1
-        
-        self.cur.execute(f"""INSERT INTO responses 
-                            (request_id, city_name, temperature, feels_like, success_code, last_updated) 
-                            VALUES {id_number, city_name, temperature, feels_like, success_code, last_updated}""" )
+
         self.conn.commit()
         
     def get_request_count(self) -> int:
