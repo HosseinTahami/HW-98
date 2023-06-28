@@ -41,7 +41,7 @@ if __name__ == '__main__' :
     while True:
         print(main_menu)
         option = input("    Option: ")
-        if option == 1:
+        if option == '1':
             city = input("  \nEnter city name: ")
             data = start_client(city)
             wdb.save_request_data(city,datetime.datetime.now())
@@ -56,21 +56,21 @@ if __name__ == '__main__' :
                 print('---------------------------------------------------------------------------------')
         
             
-        elif option == 2 :
+        elif option == '2' :
             while True:
                 print(database_menu)
                 option = input("    Option: ")
-                if option == 1 :
+                if option == '1' :
                     print("    Number of total requests: ", wdb.get_request_count())
                     print('---------------------------------------------------------------------------------')
-                elif option ==  2 :
+                elif option ==  '2' :
                     print("    Number of successful requests: ", wdb.get_successful_request_count())
                     print('---------------------------------------------------------------------------------')
-                elif option == 3 :
+                elif option == '3' :
                     pass
-                elif option == 4 :
+                elif option == '4' :
                     pass
-                elif option == 5 :
+                elif option == '5' :
                     break;
                 else :
                     print(" Wrong Option Choose Again !")
