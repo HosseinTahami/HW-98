@@ -40,7 +40,7 @@ if __name__ == '__main__' :
     wdb = db.WeatherDatabase()
     while True:
         print(main_menu)
-        option = int(input("    Option: "))
+        option = input("    Option: ")
         if option == 1:
             city = input("  \nEnter city name: ")
             data = start_client(city)
@@ -59,7 +59,7 @@ if __name__ == '__main__' :
         elif option == 2 :
             while True:
                 print(database_menu)
-                option = int(input("    Option: "))
+                option = input("    Option: ")
                 if option == 1 :
                     print("    Number of total requests: ", wdb.get_request_count())
                     print('---------------------------------------------------------------------------------')
