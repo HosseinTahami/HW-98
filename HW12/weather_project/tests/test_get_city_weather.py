@@ -1,4 +1,3 @@
-from datetime import datetime
 from weather_server import get_city_weather
 
 def test_get_city_weather():
