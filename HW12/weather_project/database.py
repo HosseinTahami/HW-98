@@ -54,7 +54,7 @@ class WeatherDatabase:
         
     def get_request_count(self) -> int:
         self.cur.execute("""SELECT COUNT(*) AS row_count 
-                            FROM responses
+                            FROM requests
                         """)
         return self.cur.fetchone()[0]
         
@@ -68,7 +68,7 @@ class WeatherDatabase:
     
     def get_city_request_count(self) -> List[Tuple[str, int]]:
         self.cur.execute("""SELECT city_name, COUNT(*) AS request_count
-                            FROM responses
+                            FROM requests
                             GROUP BY city_name 
                             ORDER BY city_name ASC
                         """)
