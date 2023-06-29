@@ -42,6 +42,7 @@ def convert_to_jalali(date_str):
     jalali_date = jdatetime.datetime.fromgregorian(datetime=date).strftime("%Y-%m-%d")
     return jalali_date
 
+print(""" date_str1 > date_str2 """)
 date_str1 = input("Enter first date (YYYY-MM-DD): ")
 date_str2 = input("Enter second date (YYYY-MM-DD): ")
 
