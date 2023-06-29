@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, '/home/hossein/MaktabSharif/HW-98/HW12/weather_project/')
 from weather_server import get_city_weather
 
 def test_get_city_weather():

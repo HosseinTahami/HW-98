@@ -1,7 +1,8 @@
-from database import WeatherDatabase
 import pytest
 from datetime import datetime, timedelta
-
+import sys
+sys.path.insert(0, '/home/hossein/MaktabSharif/HW-98/HW12/weather_project/')
+from database import WeatherDatabase
 
 @pytest.fixture
 def test():
