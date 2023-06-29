@@ -6,10 +6,11 @@ from datetime import datetime, timedelta
 @pytest.fixture
 def test():
     db = WeatherDatabase('weather_test_db')
-    db.cur.execute("delete from requests")
+    yield db
     db.cur.execute("delete from responses")
+    db.cur.execute("delete from requests")
     db.conn.commit()
-    return db  
+ 
 
 def test_save_request_data(test):
     test.save_request_data('Madrid', '2020-09-11 11:42:00')
@@ -25,16 +26,17 @@ def test_save_response_data(test):
     }
     
     test.save_response_data("Madrid", testing_data_valid)
-    test.cur.execute("select count(*) from requests")
+    test.cur.execute("select count(*) from responses")
     assert test.cur.fetchone()[0] == 1
     
     testing_data_invalid = {'message' : 'City not found'}
     test.save_response_data('Invalid City', testing_data_invalid)
-    test.cur.execute("select count(*) from requests")
+    test.cur.execute("select count(*) from responses")
     assert test.cur.fetchone()[0] == 2
     
 
 def test_get_request_count(test):
+    test.save_request_data('Madrid', '2020-09-11 11:42:00')
     assert test.get_request_count() == 1
 
 def test_get_successful_request_count(test):
