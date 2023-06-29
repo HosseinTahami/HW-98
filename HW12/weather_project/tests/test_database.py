@@ -50,14 +50,24 @@ def test_get_successful_request_count(test):
     assert test.get_successful_request_count() == 1
 
 def test_get_city_request_count(test):
-    valid_result = [("Madrid", 1), ("Invalid City", 1)]
+    valid_result = [("invalid city", 1), ("madrid", 1)]
+    test.cur.execute(f"""INSERT INTO requests (city_name, request_id, request_time) 
+                        VALUES {"madrid", 1, '2023-01-01 00:00:00'} """)
+    test.conn.commit()
+    test.cur.execute(f"""INSERT INTO requests (city_name, request_id, request_time) 
+                        VALUES {"invalid city", 2, '2023-01-01 00:00:00'} """)
+    test.conn.commit()
     assert test.get_city_request_count() == valid_result
     
 def test_get_last_hour_requests(test):
     now = datetime.now()
-    last_hour = now - timedelta( hours = 1 )
-    test.save_request_data("New York", last_hour)
-    test.save_request_data("Paris", last_hour)
-    valid_result = [("New York", last_hour),("Paris", now)]
+    last_hour = now - timedelta( hours = 2 )
+    test.cur.execute(f"""INSERT INTO requests (city_name, request_id, request_time) 
+                        VALUES {"paris", 1, str(last_hour)} """)
+    test.conn.commit()
+    test.cur.execute(f"""INSERT INTO requests (city_name, request_id, request_time) 
+                        VALUES {"madrid", 2, str(now)} """)
+    test.conn.commit()
+    valid_result = [("madrid", 2,str(now))]
     assert test.get_last_hour_requests() == valid_result
         
