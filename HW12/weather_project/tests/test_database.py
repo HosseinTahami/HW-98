@@ -36,11 +36,17 @@ def test_save_response_data(test):
     
 
 def test_get_request_count(test):
-    test.save_request_data('Madrid', '2020-09-11 11:42:00')
+    #test.save_request_data('Madrid', '2020-09-11 11:42:00')
+    test.cur.execute(f"""INSERT INTO requests (city_name, request_id, request_time) 
+                        VALUES {"madrid", 1, '2023-01-01 00:00:00'} """)
+    test.conn.commit()
     assert test.get_request_count() == 1
 
 def test_get_successful_request_count(test):
-    test.cur.execute("select count(*) from requests")
+    test.cur.execute(f"""INSERT INTO responses 
+                        (request_id, city_name, temperature, feels_like, success_code, last_updated) 
+                        VALUES {1, "madrid", 22.22, 22.33, True, '2023-01-01 00:00:00'}""" )
+    test.conn.commit()
     assert test.get_successful_request_count() == 1
 
 def test_get_city_request_count(test):

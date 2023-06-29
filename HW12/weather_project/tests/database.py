@@ -54,7 +54,7 @@ class WeatherDatabase:
         
     def get_request_count(self) -> int:
         self.cur.execute("""SELECT COUNT(*) AS row_count 
-                            FROM responses
+                            FROM requests
                         """)
         return self.cur.fetchone()[0]
         
