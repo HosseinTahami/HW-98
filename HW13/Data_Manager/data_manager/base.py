@@ -1,6 +1,11 @@
+"""
+This file contains the base classes for the file manager,
+including BaseModel and BaseManager
+"""
+
 from abc import ABC, abstractmethod
 from typing import Any, Generator
-
+import os
 
 class BaseModel(ABC):
     _id: int
@@ -72,7 +77,9 @@ class BaseManager(ABC):
         Returns a generator of all stored models with type == model_cls
         (Optional: Returns all stored models (non-type-sensitive) if models_cls == None)
         """
-        pass
+        files = os.listdir(self.files_root + "/")
+        for file in files :
+            pass
 
     @abstractmethod
     def truncate(self, model_cls: type) -> None:

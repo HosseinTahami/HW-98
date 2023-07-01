@@ -1,3 +1,7 @@
+"""
+This file contains the unit tests for the FileManager class !
+"""
+
 import os
 import shutil
 from unittest import TestCase

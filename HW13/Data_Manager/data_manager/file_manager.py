@@ -1,3 +1,12 @@
+"""
+ This file contains the implementation of the file manager class called FileManager.
+ This class inherits from BaseManager and implements the methods for :
+ 1- creating files
+ 2- reading files
+ 3- updating files
+ 4 -deleting files
+"""
+
 from typing import Generator, Any
 from data_manager.base import BaseModel, BaseManager
 import os
