@@ -8,11 +8,14 @@ from typing import Any, Generator
 import os
 
 class BaseModel(ABC):
+    
+    #initialize the object
     _id: int
 
     def __repr__(self):
         return f"<{self.__class__.__name__} #{self._id}>"
 
+    # checks if the objects are the same
     def __eq__(self, __value: object) -> bool:
         return (type(self) is type(__value) and
                 self._id == __value._id)
@@ -25,6 +28,11 @@ class BaseModel(ABC):
         return obj
 
     def to_dict(self):
+        """
+        https://www.geeksforgeeks.org/vars-function-python/
+        
+        vars will return a dictionary of the object's properties
+        """
         result = vars(self).copy()
         for k in result.keys():
             if not k.lower():
