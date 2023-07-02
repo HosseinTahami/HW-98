@@ -130,7 +130,11 @@ class FileManager(BaseManager):
         Yields:
             BaseModel: The next model instance.
         """
-        pass
+        files = os.listdir(self.files_root + '/')
+        for file in files:
+            if model_cls is None or file.startswith(model_cls.__name__):
+                with open(os.path.join(self.files_root, file), 'rb') as f:
+                    yield pickle.load(f)
 
     def truncate(self, model_cls: type) -> None:
         """
