@@ -9,6 +9,10 @@ import os
 
 class BaseModel(ABC):
     
+    """
+    BaseModel will represents a model with an ID.
+    """
+    
     #initialize the object
     _id: int
 
