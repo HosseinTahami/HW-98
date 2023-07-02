@@ -23,6 +23,11 @@ class BaseModel(ABC):
     def __eq__(self, __value: object) -> bool:
         return (type(self) is type(__value) and
                 self._id == __value._id)
+    
+    """
+    from_dict and to_dict methods will convert a BaseModel instance
+    to a dictionary and the opposite ! 
+    """
 
     @classmethod
     def from_dict(cls, data):
