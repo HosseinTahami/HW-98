@@ -71,3 +71,5 @@ class FileManagerTest(TestCase):
 
         for m in models:
             self.assertIn(m, all_models)
+
+#python3 -m unittest test.py
