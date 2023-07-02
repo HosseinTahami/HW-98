@@ -118,7 +118,7 @@ class FileManager(BaseManager):
             id (int): The ID of the model instance to delete.
             model_cls (type): The type of the model instance.
         """
-        pass
+        os.remove(self._get_file_path(id, model_cls))
 
     def read_all(self, model_cls: type = None) -> Generator:
         """
