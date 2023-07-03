@@ -73,7 +73,13 @@ class FileManagerTest(TestCase):
             self.assertIn(m, all_models)
     
     def test4_update(self):
-        pass
+        test_model = TestModel("Test4")
+        
+        self.manager.create(test_model)
+        test_model.data = "Updated Test4"
+        self.manager.update(test_model)
+        updated_model = self.manager.read(test_model._id, test_model.__class__)
+        self.assertEqual(updated_model.data, "Updated Test4")
     
     def test5_delete(self):
         pass
