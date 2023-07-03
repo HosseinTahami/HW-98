@@ -87,6 +87,6 @@ class FileManagerTest(TestCase):
         self.manager.create(test_model)
         self.manager.delete(test_model._id, test_model.__class__)
         deleted_model = self.manager.read(test_model._id, test_model.__class__)
-        self.assertIsNone(deleted_model)
+        self.assertFile(deleted_model)
 
 #python3 -m unittest test.py
