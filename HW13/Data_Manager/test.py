@@ -83,10 +83,11 @@ class FileManagerTest(TestCase):
     
     def test5_delete(self):
         test_model = TestModel("Test5")
-            
         self.manager.create(test_model)
+        m = self.manager.read(test_model._id, test_model.__class__)
         self.manager.delete(test_model._id, test_model.__class__)
-        deleted_model = self.manager.read(test_model._id, test_model.__class__)
-        self.assertFile(deleted_model)
+        all_models = list(self.manager.read_all(TestModel))
+        self.assertNotIn(m, all_models)
+
 
 #python3 -m unittest test.py
