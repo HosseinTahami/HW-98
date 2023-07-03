@@ -82,6 +82,11 @@ class FileManagerTest(TestCase):
         self.assertEqual(updated_model.data, "Updated Test4")
     
     def test5_delete(self):
-        pass
+        test_model = TestModel("Test5")
+            
+        self.manager.create(test_model)
+        self.manager.delete(test_model._id, test_model.__class__)
+        deleted_model = self.manager.read(test_model._id, test_model.__class__)
+        self.assertIsNone(deleted_model)
 
 #python3 -m unittest test.py
