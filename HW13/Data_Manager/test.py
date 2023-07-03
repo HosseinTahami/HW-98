@@ -71,5 +71,11 @@ class FileManagerTest(TestCase):
 
         for m in models:
             self.assertIn(m, all_models)
+    
+    def test4_update(self):
+        pass
+    
+    def test5_delete(self):
+        pass
 
 #python3 -m unittest test.py
