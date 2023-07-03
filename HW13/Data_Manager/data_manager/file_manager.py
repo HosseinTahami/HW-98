@@ -80,7 +80,7 @@ class FileManager(BaseManager):
         """
         m._id = self._get_id(m.__class__)  # set ID!!!!
         file_path = self._get_file_path(m._id, m.__class__)
-        with open(self._get_file_path(m._id, m.__class__), 'wb') as f:
+        with open(file_path, 'wb') as f:
             pickle.dump(m, f)
         return file_path
 
@@ -107,7 +107,8 @@ class FileManager(BaseManager):
         Args:
             m (BaseModel): The model instance to update.
         """
-        with open(self._get_file_path(m._id, m.__class__), 'wb') as f:
+        file_path = self._get_file_path(m._id, m.__class__)
+        with open(file_path, 'wb') as f:
             pickle.dump(m, f)
 
     def delete(self, id: int, model_cls: type) -> None:
@@ -118,7 +119,8 @@ class FileManager(BaseManager):
             id (int): The ID of the model instance to delete.
             model_cls (type): The type of the model instance.
         """
-        os.remove(self._get_file_path(id, model_cls))
+        file_path = self._get_file_path(id, model_cls)
+        os.remove(file_path)
 
     def read_all(self, model_cls: type = None) -> Generator:
         """
