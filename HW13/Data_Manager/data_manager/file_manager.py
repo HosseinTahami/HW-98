@@ -95,7 +95,8 @@ class FileManager(BaseManager):
         Returns:
             BaseModel: The model instance.
         """
-        with open(self._get_file_path(id, model_cls), 'rb') as f:
+        file_path = self._get_file_path(id, model_cls)
+        with open(file_path, 'rb') as f:
             m = pickle.load(f)
         return m
         
