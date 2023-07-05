@@ -65,12 +65,13 @@ class DBManager(BaseManager):
             return None
         
     def update(self, m: BaseModel) -> None:
-        # TODO: Complete
         data = m.to_dict()
-        query = self.converter_model_to_query(data)
+        SET_list = []
+        for key, value in data.items():
+            SET_list.append(f'{key}={self.converter_model_to_query(value)}')
         with self.__conn.cursor() as curs:
-            curs.execute(f'UPDATE')
-        pass
+            curs.execute(f'UPDATE {m.TABLE_NAME} SET {SET_list} WHERE _id = {m._id}')
+        self.__conn.commit()
 
 
     def delete(self, id: int, model_cls: type) -> None:
