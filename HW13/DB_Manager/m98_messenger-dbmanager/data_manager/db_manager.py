@@ -66,13 +66,12 @@ class DBManager(BaseManager):
         
     def update(self, m: BaseModel) -> None:
         data = m.to_dict()
-        SET_list = []
+        convertor = self.converter_model_to_queryable
         for key, value in data.items():
-            SET_list.append(f'{key}={self.converter_model_to_query(value)}')
+            SET_front = ','.join(f'{key}={convertor(value)}')
         with self.__conn.cursor() as curs:
-            curs.execute(f'UPDATE {m.TABLE_NAME} SET {SET_list} WHERE _id = {m._id}')
+            curs.execute(f'UPDATE {m.TABLE_NAME} SET {SET_front} WHERE _id = {m._id}')
         self.__conn.commit()
-
 
     def delete(self, id: int, model_cls: type) -> None:
         with self.__conn.cursor() as curs:
@@ -88,7 +87,7 @@ class DBManager(BaseManager):
             result = curs.fetchall()
         for row in result:
             yield model_cls.from_dict(row)
-            
+             
         # result_list = []
         # for row in result:
         #     result_list.append(model_cls.from_dict(row))
