@@ -68,9 +68,9 @@ class DBManager(BaseManager):
         data = m.to_dict()
         convertor = self.converter_model_to_queryable
         for key, value in data.items():
-            SET_front = ','.join(f'{key}={convertor(value)}')
+            new_data = ','.join(f'{key}={convertor(value)}')
         with self.__conn.cursor() as curs:
-            curs.execute(f'UPDATE {m.TABLE_NAME} SET {SET_front} WHERE _id = {m._id}')
+            curs.execute(f'UPDATE {m.TABLE_NAME} SET {new_data} WHERE _id = {m._id}')
         self.__conn.commit()
 
     def delete(self, id: int, model_cls: type) -> None:
