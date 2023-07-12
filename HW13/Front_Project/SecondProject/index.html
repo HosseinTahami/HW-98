@@ -278,40 +278,42 @@
     </section>
     <!-- Picture Section-->
     <section class="bg-light py-5">
-        <div class="container bg-light ">
+        <div class="container bg-light mt-5 mb-5">
             <div class="row">
                 <br>
-                <br>
+                <h2 class="text-center mb-5">What people are saying...</h2>
             </div>
-            <div class="row">
-                <div class="col-4 gx-3">
-                    <img src="img/testimonials-1.jpg" alt="nothing" style="border-radius:50%; width: 150px;">
-                    <title>Placeholder</title>
-                    <h2 class="justify-center">Margaret E.</h2>
-                    <p>
-                        Another exciting bit of representative placeholder content.
-                        This time, we've moved on to the second column.
+            <div class="row mt-3">
+                <div class="col-4 gx-3 text-center">
+                    <img class="mb-3" src="img/testimonials-1.jpg" alt="nothing"
+                        style="border-radius:50%; width: 200px;">
+                    <h5 class="text-center">Margaret E.</h5>
+                    <p class="text-center">
+                        "This is fantastic! Thanks so much guys!"
                     </p>
                 </div>
-                <div class="col-4 gx-3">
-                    <img src="img/testimonials-2.jpg" alt="nothing" style="border-radius:50%; width: 150px;">
-                    <title>Placeholder</title>
-                    <h2 class="justify-center">Fred S.</h2>
-                    <p>And lastly this, the third column of representative placeholder content.</p>
+                <div class="col-4 gx-3 text-center">
+                    <img class="mb-3" src="img/testimonials-2.jpg" alt="nothing"
+                        style="border-radius:50%; width: 200px;">
+                    <h5 class="text-center">Fred S.</h5>
+                    <p class="text-center">
+                        "Bootstrap is amazing. I've been using it <br> to create lots of super nice landing <br>
+                        pages."
+                    </p>
                 </div>
-                <div class="col-4 gx-3">
-                    <img src="img/testimonials-3.jpg" alt="nothing" style="border-radius:50%; width: 150px;">
-                    <h2>Sarah W.</h2>
-                    <p>
-                        Some representative placeholder content for the three
-                        columns of text below the carousel.This is the first column.
+                <div class="col-4 gx-3 text-center">
+                    <img class="mb-3" src="img/testimonials-3.jpg" alt="nothing"
+                        style="border-radius:50%; width: 200px;">
+                    <h5 class="text-center">Sarah W.</h5>
+                    <p class="text-center">
+                        "Thanks so much for making these free <br> resources available to us!"
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact section-->
+    <!-- FORM SECTION -->
     <section class="bg-light py-5">
         <div class="container px-5 my-5 px-5">
             <div class="text-center mb-5">
@@ -319,42 +321,28 @@
                         class="bi bi-envelope"></i>
                 </div>
                 <h2 class="fw-bolder">Get in touch</h2>
-                <p class="lead mb-0">We'd love to hear from you</p>
+                <small>We'd love to hear from you</small>
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <form id="contactForm">
                         <!-- Name input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="name" type="text" placeholder="Enter your name..."
                                 data-sb-validations="required" />
                             <label for="name">Full name</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                         </div>
                         <!-- Email address input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="email" type="email" placeholder="name@example.com"
                                 data-sb-validations="required,email" />
                             <label for="email">Email address</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.
-                            </div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                         </div>
                         <!-- Phone number input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
                                 data-sb-validations="required" />
                             <label for="phone">Phone number</label>
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is
-                                required.
-                            </div>
                         </div>
                         <!-- Message input-->
                         <div class="form-floating mb-3">
@@ -362,35 +350,14 @@
                                 placeholder="Enter your message here..." style="height: 10rem"
                                 data-sb-validations="required"></textarea>
                             <label for="message">Message</label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
-                            </div>
                         </div>
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a
-                                    href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">Error sending message!</div>
-                        </div>
-                        <!-- Submit Button-->
-                        <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton"
-                                type="submit">Submit</button></div>
-                    </form>
                 </div>
+                <!-- Submit Button-->
+                <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton"
+                        type="submit">Submit</button></div>
+                </form>
             </div>
+        </div>
         </div>
     </section>
 
@@ -400,30 +367,25 @@
             <div class="row py-5 ">
                 <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                     <ul class="list-inline mb-2">
-                        <li class="list-inline-item text-decoration-none"><a
-                                href="https://storied-daifuku-9fd79c.netlify.app/#!">About</a></li>
+                        <li class="list-inline-item text-decoration-none"><a href="#!">About</a></li>
                         <li class="list-inline-item text-decoration-none">⋅</li>
-                        <li class="list-inline-item text-decoration-none"><a
-                                href="https://storied-daifuku-9fd79c.netlify.app/#!">Contact</a></li>
+                        <li class="list-inline-item text-decoration-none"><a href="#!">Contact</a></li>
                         <li class="list-inline-item text-decoration-none">⋅</li>
-                        <li class="list-inline-item text-decoration-none"><a
-                                href="https://storied-daifuku-9fd79c.netlify.app/#!">Terms of Use</a></li>
+                        <li class="list-inline-item text-decoration-none"><a href="#!">Terms of Use</a></li>
                         <li class="list-inline-item text-decoration-none">⋅</li>
-                        <li class="list-inline-item text-decoration-none"><a
-                                href="https://storied-daifuku-9fd79c.netlify.app/#!">Privacy Policy</a></li>
+                        <li class="list-inline-item text-decoration-none"><a href="#!">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item me-4">
-                            <a href="https://storied-daifuku-9fd79c.netlify.app/#!"><i class="bi-facebook fs-3"></i></a>
+                            <a href="#!"><i class="bi-facebook fs-3"></i></a>
                         </li>
                         <li class="list-inline-item me-4">
-                            <a href="https://storied-daifuku-9fd79c.netlify.app/#!"><i class="bi-twitter fs-3"></i></a>
+                            <a href="#!"><i class="bi-twitter fs-3"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://storied-daifuku-9fd79c.netlify.app/#!"><i
-                                    class="bi-instagram fs-3"></i></a>
+                            <a href="#!"><i class="bi-instagram fs-3"></i></a>
                         </li>
                     </ul>
                 </div>
