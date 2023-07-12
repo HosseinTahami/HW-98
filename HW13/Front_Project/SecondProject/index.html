@@ -340,21 +340,23 @@
                         </div>
                         <!-- Phone number input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
-                                data-sb-validations="required" />
+                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" />
                             <label for="phone">Phone number</label>
                         </div>
                         <!-- Message input-->
                         <div class="form-floating mb-3">
                             <textarea class="form-control" id="message" type="text"
-                                placeholder="Enter your message here..." style="height: 10rem"
-                                data-sb-validations="required"></textarea>
+                                placeholder="Enter your message here..." style="height: 10rem">
+                            </textarea>
                             <label for="message">Message</label>
                         </div>
                 </div>
                 <!-- Submit Button-->
-                <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton"
-                        type="submit">Submit</button></div>
+                <div class="text-center">
+                    <button class="btn btn-primary disabled" id="submitButton" type="submit" style="width: 37rem">
+                        Submit
+                    </button>
+                </div>
                 </form>
             </div>
         </div>
@@ -365,34 +367,26 @@
     <footer class="footer bg-dark ">
         <div class="container">
             <div class="row py-5 ">
-                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                    <ul class="list-inline mb-2">
-                        <li class="list-inline-item text-decoration-none"><a href="#!">About</a></li>
-                        <li class="list-inline-item text-decoration-none">⋅</li>
-                        <li class="list-inline-item text-decoration-none"><a href="#!">Contact</a></li>
-                        <li class="list-inline-item text-decoration-none">⋅</li>
-                        <li class="list-inline-item text-decoration-none"><a href="#!">Terms of Use</a></li>
-                        <li class="list-inline-item text-decoration-none">⋅</li>
-                        <li class="list-inline-item text-decoration-none"><a href="#!">Privacy Policy</a></li>
-                    </ul>
+                <div class="col-6">
+                    <a class="mx-3" href="">About</a>
+                    <a class="mx-3" href="">Contact</a>
+                    <a class="mx-3" href="">Terms of Use</a>
+                    <a class="mx-3" href="">Privacy Policy</a>
                 </div>
-                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                        </li>
-                        <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                        </li>
-                    </ul>
+                <div class="col-6 text-end">
+                    <a class="mx-3" href=" #!">
+                        <i class="bi-facebook fs-3"></i>
+                    </a>
+                    <a class="mx-3" href=" #!">
+                        <i class="bi-twitter fs-3"></i>
+                    </a>
+                    <a class="mx-3" href=" #!">
+                        <i class="bi-instagram fs-3"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
-
     <script src="bootstrap.bundle.min.js"></script>
 </body>
 
